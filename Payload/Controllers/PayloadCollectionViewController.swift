@@ -8,21 +8,26 @@
 
 import UIKit
 
-open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>: UICollectionViewController, Searchable {
+open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>: UICollectionViewController {
     var cellsPerRow: Int { return 3; }
     var cellSpacing: CGFloat {return 3; }
     
-    public var searchString: String? {
+    public var activityIndicatorView: (UIView & PayloadActivityIndicator)? = UIActivityIndicatorView() {
         didSet {
-            if oldValue == searchString {return}
-            collection.searchString = searchString;
-            refresh();
+            
         }
     }
     
-    let refreshControl: UIRefreshControl? = UIRefreshControl();
-    
-    private let activityIndicator = UIRefreshControl();
+    open var refreshControl: UIRefreshControl? {
+        didSet {
+            oldValue?.removeTarget(self, action: #selector(refresh), for: .valueChanged);
+            
+            if let refreshControl = refreshControl {
+                collectionView.addSubview(refreshControl);
+            }
+            refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged);
+        }
+    }
     
     public var collection: PayloadCollection<T.PayloadType>;
     private var dataSource: PayloadCollectionViewDataSource<T>;
@@ -48,23 +53,15 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
         // TODO: Refactor this later to understand best way to update size on viewDidLayout
         setupCellSize();
         
-        setupRefresh();
-        
         collectionView?.register(T.self);
         collectionView?.dataSource = dataSource;
         loadData(reload: true);
-        
-        applyStyle();
     }
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
         setupCellSize();
-    }
-    
-    private func applyStyle() {
-        collectionView?.backgroundColor = .clear;
     }
     
     private func setupCellSize() {
@@ -87,7 +84,7 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
     }
     
     @objc
-    private func refresh() {
+    public func refresh() {
 //        collection.removeAll();
         collectionView?.reloadData();
         refreshControl?.beginRefreshing();
@@ -107,7 +104,7 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
         }
         
         if refreshControl?.isRefreshing == false && collection.count != 0 {
-            activityIndicator.beginRefreshing();
+            activityIndicatorView?.startAnimating();
         }
         
         collection.loadData(reload: reload);
@@ -116,7 +113,7 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
     private func collectionChanged() {
         collectionView?.reloadData();
         refreshControl?.endRefreshing();
-        activityIndicator.endRefreshing();
+        activityIndicatorView?.stopAnimating();
     }
     
     override open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

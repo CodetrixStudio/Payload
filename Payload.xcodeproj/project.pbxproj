@@ -11,7 +11,6 @@
 		64193FAB21831D800017783D /* PayloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FAA21831D800017783D /* PayloadTests.swift */; };
 		64193FAD21831D800017783D /* Payload.h in Headers */ = {isa = PBXBuildFile; fileRef = 64193F9F21831D800017783D /* Payload.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64193FB921831DCB0017783D /* PayloadCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FB821831DCB0017783D /* PayloadCollection.swift */; };
-		64193FBC21831E090017783D /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FBB21831E090017783D /* Searchable.swift */; };
 		64193FBE21831E240017783D /* Consignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FBD21831E240017783D /* Consignee.swift */; };
 		64193FC021831E840017783D /* PayloadCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FBF21831E840017783D /* PayloadCollectionDataSource.swift */; };
 		64193FCC218320850017783D /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FCB218320850017783D /* CodableExtensions.swift */; };
@@ -22,6 +21,7 @@
 		64C0080B21884C6800199F37 /* PayloadCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0080921884C6800199F37 /* PayloadCollectionViewController.swift */; };
 		64C0080C21884C6800199F37 /* PayloadCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0080A21884C6800199F37 /* PayloadCollectionViewDataSource.swift */; };
 		64C0080E21884D5800199F37 /* CollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0080D21884D5800199F37 /* CollectionViewExtensions.swift */; };
+		64C156E6218C2C2B0055F79C /* PayloadActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C156E5218C2C2B0055F79C /* PayloadActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 		64193FAA21831D800017783D /* PayloadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadTests.swift; sourceTree = "<group>"; };
 		64193FAC21831D800017783D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64193FB821831DCB0017783D /* PayloadCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadCollection.swift; sourceTree = "<group>"; };
-		64193FBB21831E090017783D /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
 		64193FBD21831E240017783D /* Consignee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consignee.swift; sourceTree = "<group>"; };
 		64193FBF21831E840017783D /* PayloadCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadCollectionDataSource.swift; sourceTree = "<group>"; };
 		64193FCB218320850017783D /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		64C0080921884C6800199F37 /* PayloadCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadCollectionViewController.swift; sourceTree = "<group>"; };
 		64C0080A21884C6800199F37 /* PayloadCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		64C0080D21884D5800199F37 /* CollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtensions.swift; sourceTree = "<group>"; };
+		64C156E5218C2C2B0055F79C /* PayloadActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +118,9 @@
 		64193FBA21831DFA0017783D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				64193FBB21831E090017783D /* Searchable.swift */,
 				64193FBD21831E240017783D /* Consignee.swift */,
 				64193FBF21831E840017783D /* PayloadCollectionDataSource.swift */,
+				64C156E5218C2C2B0055F79C /* PayloadActivityIndicator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -279,8 +279,8 @@
 				64C0080B21884C6800199F37 /* PayloadCollectionViewController.swift in Sources */,
 				64193FD3218322640017783D /* PayloadTableViewController.swift in Sources */,
 				64193FCC218320850017783D /* CodableExtensions.swift in Sources */,
-				64193FBC21831E090017783D /* Searchable.swift in Sources */,
 				64C0080C21884C6800199F37 /* PayloadCollectionViewDataSource.swift in Sources */,
+				64C156E6218C2C2B0055F79C /* PayloadActivityIndicator.swift in Sources */,
 				64193FD7218322F70017783D /* PayloadTableViewDataSource.swift in Sources */,
 				64193FD5218322930017783D /* TableViewExtensions.swift in Sources */,
 			);

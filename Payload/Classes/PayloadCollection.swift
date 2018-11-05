@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PayloadCollection<T: Codable>: NSObject, Searchable {
+public class PayloadCollection<T: Codable>: NSObject {
     
     public var bufferSize: Int = 30;
     public var bufferDelta: Int = 5;
@@ -16,7 +16,6 @@ public class PayloadCollection<T: Codable>: NSObject, Searchable {
     public var isLoading: Bool = false;
     public var canLoadMore: Bool = true;
     
-    public var searchString: String?
     private var elements: [T] = [T]();
     
     public weak var dataSource: PayloadCollectionDataSource?

@@ -8,16 +8,20 @@
 
 import UIKit
 
-open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableViewController, Searchable {
-    public var searchString: String? {
+open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableViewController {
+    
+    public var activityIndicatorView: (UIView & PayloadActivityIndicator)? = UIActivityIndicatorView() {
         didSet {
-            if oldValue == searchString {return}
-            collection.searchString = searchString;
-            refresh();
+            tableView.tableFooterView = activityIndicatorView;
         }
     }
     
-    private let activityIndicator = UIRefreshControl();
+    open override var refreshControl: UIRefreshControl? {
+        didSet {
+            oldValue?.removeTarget(self, action: #selector(refresh), for: .valueChanged);
+            refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged);
+        }
+    }
     
     public var collection: PayloadCollection<T.PayloadType>;
     private let dataSource: PayloadTableViewDataSource<T>;
@@ -41,22 +45,13 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
         
         collection.elementsChanged.append(collectionChanged);
         
-        setupRefresh();
-        
         tableView.register(T.self);
         tableView.dataSource = dataSource;
         loadData(reload: true);
     }
     
-    private func setupRefresh() {
-        refreshControl = UIRefreshControl();
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged);
-        
-        tableView.tableFooterView = activityIndicator;
-    }
-    
     @objc
-    private func refresh() {
+    public func refresh() {
 //        collection.removeAll();
         tableView.reloadData();
         
@@ -77,16 +72,16 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
         }
         
         if refreshControl?.isRefreshing == false && collection.count != 0 {
-            activityIndicator.beginRefreshing();
+            activityIndicatorView?.startAnimating();
         }
         
         collection.loadData(reload: reload);
     }
     
     @objc func collectionChanged() {
-        self.tableView.reloadData();
-        self.refreshControl?.endRefreshing();
-        self.activityIndicator.endRefreshing();
+        tableView.reloadData();
+        refreshControl?.endRefreshing();
+        activityIndicatorView?.stopAnimating()
     }
     
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

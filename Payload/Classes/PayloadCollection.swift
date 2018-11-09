@@ -44,10 +44,10 @@ public class PayloadCollection<T: Codable>: NSObject {
     
     //MARK: Observer
     
-    typealias Callback = () -> Void;
+    public typealias ElementsChangedCallback = () -> Void;
     
     //MARK: Refactor this to not be an array
-    var elementsChanged: [Callback] = [];
+    public var elementsChanged: [ElementsChangedCallback] = [];
     
 }
 

@@ -85,7 +85,7 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
     
     @objc
     public func refresh() {
-//        collection.removeAll();
+        collection.removeAll();
         collectionView?.reloadData();
         refreshControl?.beginRefreshing();
         let contentOffset = CGPoint(x: 0, y: -(refreshControl?.frame.height ?? 0));

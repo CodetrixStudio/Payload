@@ -22,6 +22,10 @@ public class PayloadCollection<T: Codable>: NSObject {
     
     private var payloadTask: PayloadTask?
     
+    required public override init() {
+        
+    }
+    
     func loadData(reload: Bool = false) {
         payloadTask?.cancel();
         
@@ -57,7 +61,7 @@ extension PayloadCollection {
     }
 }
 
-extension PayloadCollection: Collection {
+extension PayloadCollection: MutableCollection, RangeReplaceableCollection {
     public typealias DataCollectionType = [T]
     public typealias Index = DataCollectionType.Index
     public typealias Element = DataCollectionType.Element
@@ -65,8 +69,13 @@ extension PayloadCollection: Collection {
     public var startIndex: Index { return elements.startIndex }
     public var endIndex: Index { return elements.endIndex }
     
-    public subscript(index: Index) -> Element {
-        get { return elements[index] }
+    public subscript(index: Index) -> T {
+        get {
+            return elements[index]
+        }
+        set(newValue) {
+            elements[index] = newValue;
+        }
     }
     
     public func index(after i: DataCollectionType.Index) -> DataCollectionType.Index {

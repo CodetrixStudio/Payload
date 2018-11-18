@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol PayloadCollectionDataSource: class {
-    func getPayloads<T>(of modelType: T.Type, completionHandler: @escaping (T?) -> Void) -> PayloadTask? where T: Codable & Collection
+    func getPayloads<T>(of modelType: T.Type, completionHandler: @escaping (T?) -> Void) -> PayloadTask? where T: Collection
 }
 
 public protocol PayloadTask {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PayloadCollection<T: Codable>: NSObject {
+public class PayloadCollection<T>: NSObject {
     
     public var bufferSize: Int = 30;
     public var bufferDelta: Int = 5;

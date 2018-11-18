@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol Consignee: class {
-    associatedtype PayloadType: Codable;
+    associatedtype PayloadType;
     func set(_ payload: PayloadType);
 }

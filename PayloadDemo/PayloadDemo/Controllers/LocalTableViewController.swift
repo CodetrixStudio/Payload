@@ -20,7 +20,7 @@ class LocalTableViewController: PayloadTableViewController<TitleTableViewCell>, 
         super.viewDidLoad();
     }
     
-    func getPayloads<T>(of modelType: T.Type, completionHandler: @escaping (Optional<T>) -> ()) -> PayloadTask? where T : Collection, T : Decodable, T : Encodable {
+    func getPayloads<T>(of modelType: T.Type, completionHandler: @escaping (Optional<T>) -> ()) -> PayloadTask? where T : Collection {
         completionHandler(overwatchHeroes as? T);
         return nil;
     }

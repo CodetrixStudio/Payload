@@ -24,12 +24,8 @@ class TitleTableViewCell: UITableViewCell, Consignee {
         // Configure the view for the selected state
     }
     
-    func set(_ model: Title) {
-        titleLabel.text = model.title;
+    func set(_ title: String) {
+        titleLabel.text = title;
     }
     
-}
-
-protocol Title {
-    var title: String? {get}
 }

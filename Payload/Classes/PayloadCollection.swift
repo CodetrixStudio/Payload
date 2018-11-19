@@ -18,7 +18,7 @@ public class PayloadCollection<T>: NSObject {
     
     private var elements: [T] = [T]();
     
-    public weak var dataSource: PayloadCollectionDataSource?
+    public var courier: Courier<T>?
     
     private var payloadTask: PayloadTask?
     
@@ -31,7 +31,7 @@ public class PayloadCollection<T>: NSObject {
         
         isLoading = true;
         
-        payloadTask = dataSource?.getPayloads(of: [T].self) { (result) in
+        payloadTask = courier?({ (result) in
             self.isLoading = false;
             guard let result = result else { return }
             
@@ -43,7 +43,7 @@ public class PayloadCollection<T>: NSObject {
             self.elements.append(contentsOf: result);
             
             self.elementsChanged.forEach({$0()});
-        }
+        })
     }
     
     //MARK: Observer

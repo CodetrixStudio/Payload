@@ -9,19 +9,18 @@
 import UIKit
 import Payload
 
-class LocalTableViewController: PayloadTableViewController<TitleTableViewCell>, PayloadCollectionDataSource {
+class LocalTableViewController: PayloadTableViewController<TitleTableViewCell> {
+    
     let overwatchHeroes = ["Ana", "Ashe", "Bastion", "Brigitte", "D.Va", "Doomfist", "Genji", "Hanzo", "Junkrat", "Lúcio", "McCree", "Mei", "Mercy", "Moira", "Orisa", "Pharah", "Reaper", "Reinhardt", "Roadhog", "Soldier: 76", "Sombra", "Symmetra", "Torbjörn", "Tracer", "Widowmaker", "Winston", "Wrecking Ball", "Zarya", "Zenyatta"];
     
     override func viewDidLoad() {
-        if collection.dataSource == nil {
-            collection.dataSource = self;
-        }
+        collection.courier = getPayloads;
         
         super.viewDidLoad();
     }
     
-    func getPayloads<T>(of modelType: T.Type, completionHandler: @escaping (Optional<T>) -> ()) -> PayloadTask? where T : Collection {
-        completionHandler(overwatchHeroes as? T);
+    func getPayloads(completionHandler: @escaping ([String]?) -> Void) -> PayloadTask? {
+        completionHandler(overwatchHeroes);
         return nil;
     }
 }

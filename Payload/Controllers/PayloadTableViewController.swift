@@ -75,7 +75,7 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
             activityIndicatorView?.startAnimating();
         }
         
-        collection.loadData(reload: reload);
+        collection.loadData();
     }
     
     @objc func collectionChanged() {

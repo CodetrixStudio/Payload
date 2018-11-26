@@ -16,7 +16,7 @@ class LocalTableViewController: PayloadTableViewController<TitleTableViewCell>, 
         if collection.dataSource == nil {
             collection.dataSource = self;
         }
-        
+        refreshControl = UIRefreshControl();
         super.viewDidLoad();
     }
     

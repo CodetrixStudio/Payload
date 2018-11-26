@@ -107,7 +107,7 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
             activityIndicatorView?.startAnimating();
         }
         
-        collection.loadData(reload: reload);
+        collection.loadData();
     }
     
     private func collectionChanged() {

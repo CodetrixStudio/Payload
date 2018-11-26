@@ -26,22 +26,17 @@ public class PayloadCollection<T: Codable>: NSObject {
         
     }
     
-    func loadData(reload: Bool = false) {
+    func loadData() {
         payloadTask?.cancel();
         
         isLoading = true;
         
         payloadTask = dataSource?.getPayloads(of: [T].self) { (result) in
             self.isLoading = false;
+            
             guard let result = result else { return }
-            
             self.canLoadMore = result.count == self.bufferSize;
-            
-            if reload {
-                self.elements.removeAll();
-            }
             self.elements.append(contentsOf: result);
-            
             self.elementsChanged.forEach({$0()});
         }
     }
@@ -80,5 +75,9 @@ extension PayloadCollection: MutableCollection, RangeReplaceableCollection {
     
     public func index(after i: DataCollectionType.Index) -> DataCollectionType.Index {
         return elements.index(after: i)
+    }
+    
+    public func removeAll(keepingCapacity keepCapacity: Bool = false) {
+        elements.removeAll(keepingCapacity: keepCapacity);
     }
 }

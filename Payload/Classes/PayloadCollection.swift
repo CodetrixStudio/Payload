@@ -56,7 +56,7 @@ extension PayloadCollection {
     }
 }
 
-extension PayloadCollection: MutableCollection, RangeReplaceableCollection {
+extension PayloadCollection: MutableCollection {
     public typealias DataCollectionType = [T]
     public typealias Index = DataCollectionType.Index
     public typealias Element = DataCollectionType.Element
@@ -76,8 +76,14 @@ extension PayloadCollection: MutableCollection, RangeReplaceableCollection {
     public func index(after i: DataCollectionType.Index) -> DataCollectionType.Index {
         return elements.index(after: i)
     }
-    
+}
+
+extension PayloadCollection: RangeReplaceableCollection {
     public func removeAll(keepingCapacity keepCapacity: Bool = false) {
         elements.removeAll(keepingCapacity: keepCapacity);
+    }
+    
+    public func insert(_ newElement: T, at i: DataCollectionType.Index) {
+        elements.insert(newElement, at: i);
     }
 }

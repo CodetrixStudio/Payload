@@ -24,18 +24,15 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
     }
     
     public var collection: PayloadCollection<T.PayloadType>;
-    private let dataSource: PayloadTableViewDataSource<T>;
     
     public init(collection: PayloadCollection<T.PayloadType> = PayloadCollection<T.PayloadType>()) {
         self.collection = collection;
-        dataSource = PayloadTableViewDataSource<T>(collection: collection);
         
         super.init(style: .plain);
     }
     
     required public init?(coder aDecoder: NSCoder) {
         self.collection = PayloadCollection<T.PayloadType>();
-        dataSource = PayloadTableViewDataSource<T>(collection: collection);
         
         super.init(coder: aDecoder);
     }
@@ -46,7 +43,6 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
         collection.elementsChanged.append(collectionChanged);
         
         tableView.register(T.self);
-        tableView.dataSource = dataSource;
         loadData(reload: true);
     }
     
@@ -88,5 +84,27 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
         if (indexPath.row + collection.bufferDelta >= collection.count) {
             loadData();
         }
+    }
+    
+    // MARK: DataSource
+    
+    open override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return collection.count;
+    }
+    
+    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T;
+        
+        willSet(cell: cell);
+        cell.set(collection[indexPath.row]);
+        
+        return cell
+    }
+    
+    open func willSet(cell: T) {
     }
 }

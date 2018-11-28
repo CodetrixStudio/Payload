@@ -30,18 +30,15 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
     }
     
     public var collection: PayloadCollection<T.PayloadType>;
-    private var dataSource: PayloadCollectionViewDataSource<T>;
     
     public init(collection: PayloadCollection<T.PayloadType> = PayloadCollection<T.PayloadType>()) {
         self.collection = collection;
-        dataSource = PayloadCollectionViewDataSource<T>(collection: collection);
         
         super.init(collectionViewLayout: UICollectionViewFlowLayout());
     }
     
     required public init?(coder aDecoder: NSCoder) {
         self.collection = PayloadCollection<T.PayloadType>();
-        dataSource = PayloadCollectionViewDataSource<T>(collection: collection);
         
         super.init(coder: aDecoder);
     }
@@ -54,7 +51,6 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
         setupCellSize();
         
         collectionView?.register(T.self);
-        collectionView?.dataSource = dataSource;
         loadData(reload: true);
     }
     
@@ -120,5 +116,27 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
         if (indexPath.row + collection.bufferDelta >= collection.count) {
             loadData();
         }
+    }
+    
+    // MARK: DataSource
+    
+    open override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1;
+    }
+    
+    open override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collection.count;
+    }
+    
+    open override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T;
+        
+        willSet(cell: cell);
+        cell.set(collection[indexPath.row]);
+        
+        return cell
+    }
+    
+    open func willSet(cell: T) {
     }
 }

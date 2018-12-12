@@ -26,7 +26,7 @@ public class PayloadCollection<T: Codable>: NSObject {
         
     }
     
-    func loadData() {
+    public func loadData() {
         payloadTask?.cancel();
         
         isLoading = true;

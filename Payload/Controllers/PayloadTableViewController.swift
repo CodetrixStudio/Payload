@@ -47,7 +47,7 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
     }
     
     @objc
-    public func refresh() {
+    open func refresh() {
         collection.removeAll();
         tableView.reloadData();
         

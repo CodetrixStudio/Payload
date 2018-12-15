@@ -80,7 +80,7 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
     }
     
     @objc
-    public func refresh() {
+    open func refresh() {
         collection.removeAll();
         collectionView?.reloadData();
         refreshControl?.beginRefreshing();

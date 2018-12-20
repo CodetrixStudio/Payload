@@ -26,7 +26,7 @@ public class PayloadCollection<T: Codable>: NSObject {
         
     }
     
-    public func loadData() {
+    public func loadData(_ reload: Bool = false) {
         payloadTask?.cancel();
         
         isLoading = true;
@@ -36,7 +36,13 @@ public class PayloadCollection<T: Codable>: NSObject {
             
             guard let result = result else { return }
             self.canLoadMore = result.count == self.bufferSize;
-            self.elements.append(contentsOf: result);
+            
+            if reload {
+                self.elements = result;
+            } else {
+                self.elements.append(contentsOf: result);
+            }
+            
             self.elementsChanged.forEach({$0()});
         }
     }

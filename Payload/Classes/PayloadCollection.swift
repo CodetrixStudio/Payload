@@ -35,7 +35,7 @@ public class PayloadCollection<T: Codable>: NSObject {
             self.isLoading = false;
             
             guard let result = result else { return }
-            self.canLoadMore = result.count == self.bufferSize;
+            self.canLoadMore = result.count >= self.bufferSize;
             
             if reload {
                 self.elements = result;

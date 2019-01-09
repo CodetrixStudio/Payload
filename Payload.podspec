@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Payload"
-  s.version      = "0.0.9"
+  s.version      = "0.0.10"
   s.summary      = "Handles Payload so you don't have to."
   s.description  = <<-DESC
   Awesome lib to remove boilerplate code.

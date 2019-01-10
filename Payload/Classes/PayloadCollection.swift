@@ -85,6 +85,10 @@ extension PayloadCollection: MutableCollection {
 }
 
 extension PayloadCollection: RangeReplaceableCollection {
+    public func remove(at position: PayloadCollection<T>.DataCollectionType.Index) -> T {
+        return elements.remove(at: position);
+    }
+    
     public func removeAll(keepingCapacity keepCapacity: Bool = false) {
         elements.removeAll(keepingCapacity: keepCapacity);
     }

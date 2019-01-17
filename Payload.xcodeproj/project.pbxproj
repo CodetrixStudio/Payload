@@ -17,9 +17,7 @@
 		64193FCE218320EB0017783D /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FCD218320EB0017783D /* DataExtensions.swift */; };
 		64193FD3218322640017783D /* PayloadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FD2218322640017783D /* PayloadTableViewController.swift */; };
 		64193FD5218322930017783D /* TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FD4218322930017783D /* TableViewExtensions.swift */; };
-		64193FD7218322F70017783D /* PayloadTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FD6218322F70017783D /* PayloadTableViewDataSource.swift */; };
 		64C0080B21884C6800199F37 /* PayloadCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0080921884C6800199F37 /* PayloadCollectionViewController.swift */; };
-		64C0080C21884C6800199F37 /* PayloadCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0080A21884C6800199F37 /* PayloadCollectionViewDataSource.swift */; };
 		64C0080E21884D5800199F37 /* CollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0080D21884D5800199F37 /* CollectionViewExtensions.swift */; };
 		64C156E6218C2C2B0055F79C /* PayloadActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C156E5218C2C2B0055F79C /* PayloadActivityIndicator.swift */; };
 /* End PBXBuildFile section */
@@ -48,9 +46,7 @@
 		64193FCD218320EB0017783D /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		64193FD2218322640017783D /* PayloadTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadTableViewController.swift; sourceTree = "<group>"; };
 		64193FD4218322930017783D /* TableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtensions.swift; sourceTree = "<group>"; };
-		64193FD6218322F70017783D /* PayloadTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadTableViewDataSource.swift; sourceTree = "<group>"; };
 		64C0080921884C6800199F37 /* PayloadCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadCollectionViewController.swift; sourceTree = "<group>"; };
-		64C0080A21884C6800199F37 /* PayloadCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		64C0080D21884D5800199F37 /* CollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtensions.swift; sourceTree = "<group>"; };
 		64C156E5218C2C2B0055F79C /* PayloadActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,7 +93,6 @@
 			children = (
 				64AE8D44218AC522003E69F3 /* Classes */,
 				64193FD1218321EB0017783D /* Controllers */,
-				64AE8D43218AC50A003E69F3 /* DataSources */,
 				64193FCA218320750017783D /* Extensions */,
 				64193FBA21831DFA0017783D /* Protocols */,
 				64193F9F21831D800017783D /* Payload.h */,
@@ -143,15 +138,6 @@
 				64193FD2218322640017783D /* PayloadTableViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		64AE8D43218AC50A003E69F3 /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-				64C0080A21884C6800199F37 /* PayloadCollectionViewDataSource.swift */,
-				64193FD6218322F70017783D /* PayloadTableViewDataSource.swift */,
-			);
-			path = DataSources;
 			sourceTree = "<group>";
 		};
 		64AE8D44218AC522003E69F3 /* Classes */ = {
@@ -279,9 +265,7 @@
 				64C0080B21884C6800199F37 /* PayloadCollectionViewController.swift in Sources */,
 				64193FD3218322640017783D /* PayloadTableViewController.swift in Sources */,
 				64193FCC218320850017783D /* CodableExtensions.swift in Sources */,
-				64C0080C21884C6800199F37 /* PayloadCollectionViewDataSource.swift in Sources */,
 				64C156E6218C2C2B0055F79C /* PayloadActivityIndicator.swift in Sources */,
-				64193FD7218322F70017783D /* PayloadTableViewDataSource.swift in Sources */,
 				64193FD5218322930017783D /* TableViewExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

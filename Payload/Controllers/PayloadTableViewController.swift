@@ -58,7 +58,7 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
         loadData(reload: true);
     }
     
-    private func loadData(reload: Bool = false) {
+    public func loadData(reload: Bool = false) {
         if collection.isLoading {
             return;
         }

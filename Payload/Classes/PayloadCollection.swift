@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PayloadCollection<T: Codable>: NSObject {
+public class PayloadCollection<T>: NSObject {
     
     public var bufferSize: Int = 30;
     public var bufferDelta: Int = 5;
@@ -18,7 +18,7 @@ public class PayloadCollection<T: Codable>: NSObject {
     
     private var elements: [T] = [T]();
     
-    public weak var dataSource: PayloadCollectionDataSource?
+    public var courier: Courier<T>?
     
     private var payloadTask: PayloadTask?
     
@@ -31,7 +31,7 @@ public class PayloadCollection<T: Codable>: NSObject {
         
         isLoading = true;
         
-        payloadTask = dataSource?.getPayloads(of: [T].self) { (result) in
+        payloadTask = courier?({ (result) in
             self.isLoading = false;
             
             guard let result = result else { return }
@@ -44,7 +44,7 @@ public class PayloadCollection<T: Codable>: NSObject {
             }
             
             self.elementsChanged.forEach({$0()});
-        }
+        })
     }
     
     //MARK: Observer

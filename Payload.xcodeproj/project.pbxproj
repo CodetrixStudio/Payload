@@ -12,7 +12,7 @@
 		64193FAD21831D800017783D /* Payload.h in Headers */ = {isa = PBXBuildFile; fileRef = 64193F9F21831D800017783D /* Payload.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64193FB921831DCB0017783D /* PayloadCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FB821831DCB0017783D /* PayloadCollection.swift */; };
 		64193FBE21831E240017783D /* Consignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FBD21831E240017783D /* Consignee.swift */; };
-		64193FC021831E840017783D /* PayloadCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FBF21831E840017783D /* PayloadCollectionDataSource.swift */; };
+		64193FC021831E840017783D /* PayloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FBF21831E840017783D /* PayloadTask.swift */; };
 		64193FCC218320850017783D /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FCB218320850017783D /* CodableExtensions.swift */; };
 		64193FCE218320EB0017783D /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FCD218320EB0017783D /* DataExtensions.swift */; };
 		64193FD3218322640017783D /* PayloadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FD2218322640017783D /* PayloadTableViewController.swift */; };
@@ -41,7 +41,7 @@
 		64193FAC21831D800017783D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64193FB821831DCB0017783D /* PayloadCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadCollection.swift; sourceTree = "<group>"; };
 		64193FBD21831E240017783D /* Consignee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consignee.swift; sourceTree = "<group>"; };
-		64193FBF21831E840017783D /* PayloadCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadCollectionDataSource.swift; sourceTree = "<group>"; };
+		64193FBF21831E840017783D /* PayloadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadTask.swift; sourceTree = "<group>"; };
 		64193FCB218320850017783D /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
 		64193FCD218320EB0017783D /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		64193FD2218322640017783D /* PayloadTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadTableViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				64193FBD21831E240017783D /* Consignee.swift */,
-				64193FBF21831E840017783D /* PayloadCollectionDataSource.swift */,
+				64193FBF21831E840017783D /* PayloadTask.swift */,
 				64C156E5218C2C2B0055F79C /* PayloadActivityIndicator.swift */,
 			);
 			path = Protocols;
@@ -259,7 +259,7 @@
 			files = (
 				64C0080E21884D5800199F37 /* CollectionViewExtensions.swift in Sources */,
 				64193FBE21831E240017783D /* Consignee.swift in Sources */,
-				64193FC021831E840017783D /* PayloadCollectionDataSource.swift in Sources */,
+				64193FC021831E840017783D /* PayloadTask.swift in Sources */,
 				64193FB921831DCB0017783D /* PayloadCollection.swift in Sources */,
 				64193FCE218320EB0017783D /* DataExtensions.swift in Sources */,
 				64C0080B21884C6800199F37 /* PayloadCollectionViewController.swift in Sources */,

@@ -59,16 +59,16 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
     }
     
     public func loadData(reload: Bool = false) {
-        if collection.isLoading {
-            return;
-        }
-        
         if !collection.canLoadMore && !reload {
             return;
         }
         
-        if refreshControl?.isRefreshing == false && collection.count != 0 {
+        if refreshControl == nil || refreshControl?.isRefreshing == false && collection.count != 0 {
             activityIndicatorView?.startAnimating();
+        }
+        
+        if collection.isLoading {
+            return;
         }
         
         collection.loadData();

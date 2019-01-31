@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PayloadCollection<T>: NSObject {
+open class PayloadCollection<T>: NSObject, RangeReplaceableCollection, MutableCollection {
     
     public var bufferSize: Int = 30;
     public var bufferDelta: Int = 5;
@@ -17,6 +17,9 @@ public class PayloadCollection<T>: NSObject {
     public var canLoadMore: Bool = true;
     
     private var elements: [T] = [T]();
+    open var count: Int {
+        return elements.count;
+    }
     
     public var courier: Courier<T>?
     
@@ -38,10 +41,10 @@ public class PayloadCollection<T>: NSObject {
             self.canLoadMore = result.count >= self.bufferSize;
             
             if reload {
-                self.elements = result;
-            } else {
-                self.elements.append(contentsOf: result);
+                self.removeAll();
             }
+            
+            self.append(contentsOf: result);
             
             self.elementsChanged.forEach({$0()});
         })
@@ -54,15 +57,8 @@ public class PayloadCollection<T>: NSObject {
     //MARK: Refactor this to not be an array
     public var elementsChanged: [ElementsChangedCallback] = [];
     
-}
 
-extension PayloadCollection {
-    public enum Event {
-        case elementsChanged
-    }
-}
-
-extension PayloadCollection: MutableCollection {
+    //MARK: MutableCollection {
     public typealias DataCollectionType = [T]
     public typealias Index = DataCollectionType.Index
     public typealias Element = DataCollectionType.Element
@@ -70,7 +66,7 @@ extension PayloadCollection: MutableCollection {
     public var startIndex: Index { return elements.startIndex }
     public var endIndex: Index { return elements.endIndex }
     
-    public subscript(index: Index) -> T {
+    open subscript(index: Index) -> T {
         get {
             return elements[index]
         }
@@ -79,21 +75,30 @@ extension PayloadCollection: MutableCollection {
         }
     }
     
-    public func index(after i: DataCollectionType.Index) -> DataCollectionType.Index {
+    open func index(after i: DataCollectionType.Index) -> DataCollectionType.Index {
         return elements.index(after: i)
     }
-}
+    
+    open func append(contentsOf newElements: [Element]) {
+        elements.append(contentsOf: newElements);
+    }
 
-extension PayloadCollection: RangeReplaceableCollection {
-    public func remove(at position: PayloadCollection<T>.DataCollectionType.Index) -> T {
+    //MARK: RangeReplaceableCollection
+    open func remove(at position: DataCollectionType.Index) -> T {
         return elements.remove(at: position);
     }
     
-    public func removeAll(keepingCapacity keepCapacity: Bool = false) {
+    open func removeAll(keepingCapacity keepCapacity: Bool = false) {
         elements.removeAll(keepingCapacity: keepCapacity);
     }
     
-    public func insert(_ newElement: T, at i: DataCollectionType.Index) {
+    open func insert(_ newElement: T, at i: DataCollectionType.Index) {
         elements.insert(newElement, at: i);
+    }
+}
+
+extension PayloadCollection {
+    public enum Event {
+        case elementsChanged
     }
 }

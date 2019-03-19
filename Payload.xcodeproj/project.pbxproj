@@ -17,6 +17,7 @@
 		64193FCE218320EB0017783D /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FCD218320EB0017783D /* DataExtensions.swift */; };
 		64193FD3218322640017783D /* PayloadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FD2218322640017783D /* PayloadTableViewController.swift */; };
 		64193FD5218322930017783D /* TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64193FD4218322930017783D /* TableViewExtensions.swift */; };
+		6467AD552241181000F37CF9 /* ElementChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6467AD542241181000F37CF9 /* ElementChange.swift */; };
 		64C0080B21884C6800199F37 /* PayloadCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0080921884C6800199F37 /* PayloadCollectionViewController.swift */; };
 		64C0080E21884D5800199F37 /* CollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0080D21884D5800199F37 /* CollectionViewExtensions.swift */; };
 		64C156E6218C2C2B0055F79C /* PayloadActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C156E5218C2C2B0055F79C /* PayloadActivityIndicator.swift */; };
@@ -46,6 +47,7 @@
 		64193FCD218320EB0017783D /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		64193FD2218322640017783D /* PayloadTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadTableViewController.swift; sourceTree = "<group>"; };
 		64193FD4218322930017783D /* TableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtensions.swift; sourceTree = "<group>"; };
+		6467AD542241181000F37CF9 /* ElementChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementChange.swift; sourceTree = "<group>"; };
 		64C0080921884C6800199F37 /* PayloadCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadCollectionViewController.swift; sourceTree = "<group>"; };
 		64C0080D21884D5800199F37 /* CollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtensions.swift; sourceTree = "<group>"; };
 		64C156E5218C2C2B0055F79C /* PayloadActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadActivityIndicator.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				64193FB821831DCB0017783D /* PayloadCollection.swift */,
+				6467AD542241181000F37CF9 /* ElementChange.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				64193FD3218322640017783D /* PayloadTableViewController.swift in Sources */,
 				64193FCC218320850017783D /* CodableExtensions.swift in Sources */,
 				64C156E6218C2C2B0055F79C /* PayloadActivityIndicator.swift in Sources */,
+				6467AD552241181000F37CF9 /* ElementChange.swift in Sources */,
 				64193FD5218322930017783D /* TableViewExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

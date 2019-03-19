@@ -46,13 +46,13 @@ open class PayloadCollection<T>: NSObject, RangeReplaceableCollection, MutableCo
             
             self.append(contentsOf: result);
             
-            self.elementsChanged.forEach({$0()});
+            self.elementsChanged.forEach({$0(nil)});
         })
     }
     
     //MARK: Observer
     
-    public typealias ElementsChangedCallback = () -> Void;
+    public typealias ElementsChangedCallback = ([ElementChange]?) -> Void;
     
     //MARK: Refactor this to not be an array
     public var elementsChanged: [ElementsChangedCallback] = [];

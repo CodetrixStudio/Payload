@@ -74,10 +74,32 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
         collection.loadData();
     }
     
-    @objc func collectionChanged() {
-        tableView.reloadData();
-        refreshControl?.endRefreshing();
-        activityIndicatorView?.stopAnimating()
+    func collectionChanged(changes: [ElementChange]?) {
+        if let changes = changes {
+            tableView.beginUpdates();
+            
+            for change in changes {
+                switch change {
+                case .delete(let index):
+                    tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic);
+                    break;
+                case .insert(let index):
+                    tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic);
+                    break;
+                case .update(let index):
+                    let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! T;
+                    willSet(cell: cell);
+                    cell.set(collection[index]);
+                    break;
+                }
+            }
+            
+            tableView.endUpdates();
+        } else {
+            tableView.reloadData();
+            refreshControl?.endRefreshing();
+            activityIndicatorView?.stopAnimating();
+        }
     }
     
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

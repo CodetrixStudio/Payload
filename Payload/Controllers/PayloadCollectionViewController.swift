@@ -106,10 +106,30 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
         collection.loadData();
     }
     
-    private func collectionChanged() {
-        collectionView?.reloadData();
-        refreshControl?.endRefreshing();
-        activityIndicatorView?.stopAnimating();
+    func collectionChanged(changes: [ElementChange]?) {
+        if let changes = changes {
+            collectionView.performBatchUpdates({
+                for change in changes {
+                    switch change {
+                    case .delete(let index):
+                        collectionView.deleteItems(at: [IndexPath(row: index, section: 0)]);
+                        break;
+                    case .insert(let index):
+                        collectionView.insertItems(at: [IndexPath(row: index, section: 0)]);
+                        break;
+                    case .update(let index):
+                        let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as! T;
+                        willSet(cell: cell);
+                        cell.set(collection[index]);
+                        break;
+                    }
+                }
+            })
+        } else {
+            collectionView?.reloadData();
+            refreshControl?.endRefreshing();
+            activityIndicatorView?.stopAnimating();
+        }
     }
     
     override open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

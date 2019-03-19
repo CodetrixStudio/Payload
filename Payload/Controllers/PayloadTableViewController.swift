@@ -87,9 +87,10 @@ open class PayloadTableViewController<T: UITableViewCell & Consignee>: UITableVi
                     tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic);
                     break;
                 case .update(let index):
-                    let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! T;
-                    willSet(cell: cell);
-                    cell.set(collection[index]);
+                    if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? T {
+                        willSet(cell: cell);
+                        cell.set(collection[index]);
+                    }
                     break;
                 }
             }

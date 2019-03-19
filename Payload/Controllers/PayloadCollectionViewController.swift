@@ -118,9 +118,10 @@ open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>:
                         collectionView.insertItems(at: [IndexPath(row: index, section: 0)]);
                         break;
                     case .update(let index):
-                        let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as! T;
-                        willSet(cell: cell);
-                        cell.set(collection[index]);
+                        if let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? T {
+                            willSet(cell: cell);
+                            cell.set(collection[index]);
+                        }
                         break;
                     }
                 }

@@ -37,7 +37,10 @@ open class PayloadCollection<T>: NSObject, RangeReplaceableCollection, MutableCo
         payloadTask = courier?({ (result) in
             self.isLoading = false;
             
-            guard let result = result else { return }
+            guard let result = result else {
+                self.loaded.forEach({$0(false)});
+                return;
+            }
             self.canLoadMore = result.count >= self.bufferSize;
             
             if reload {
@@ -47,15 +50,18 @@ open class PayloadCollection<T>: NSObject, RangeReplaceableCollection, MutableCo
             self.append(contentsOf: result);
             
             self.elementsChanged.forEach({$0(nil)});
+            self.loaded.forEach({$0(true)});
         })
     }
     
     //MARK: Observer
     
     public typealias ElementsChangedCallback = ([ElementChange]?) -> Void;
+    public typealias LoadedCallback = (Bool) -> Void;
     
     //MARK: Refactor this to not be an array
     public var elementsChanged: [ElementsChangedCallback] = [];
+    public var loaded: [LoadedCallback] = [];
     
 
     //MARK: MutableCollection {

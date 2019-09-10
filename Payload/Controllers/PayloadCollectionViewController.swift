@@ -9,8 +9,8 @@
 import UIKit
 
 open class PayloadCollectionViewController<T: UICollectionViewCell & Consignee>: UICollectionViewController {
-    var cellsPerRow: Int { return 3; }
-    var cellSpacing: CGFloat {return 3; }
+    open var cellsPerRow: Int { return 3; }
+    open var cellSpacing: CGFloat { return 3; }
     
     public var activityIndicatorView: (UIView & PayloadActivityIndicator)? = UIActivityIndicatorView() {
         didSet {

@@ -1,3 +1,3 @@
-_Payload is currently in alpha and is not production ready._
+_Now SwiftUI does what it tried to do._
 # Payload
 Handles Payload so you don't have to.
